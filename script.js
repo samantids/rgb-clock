@@ -1,13 +1,23 @@
 window.onload = function(){
 	var rgbButton = document.getElementById("get-rgb"),
 		rgbDiv = document.getElementById("rgb"),
-		red = 1,
+		/*red = 1,
 		green = 1,
 		blue = 1, 
 		redDescend = false,
 		greenDescend = false,
-		blueDescend = false,
-		timer = setInterval(myTimer, 5000);
+		blueDescend = false,*/
+		red = new Color (1, 2, 2),
+		green = new Color (2, 5, 5),
+		blue = new Color (1, 4, 4),
+		timer = setInterval(myTimer, 100);
+
+	function Color(value, increase, decrease){
+		this.value = value;
+		this.descend = false;
+		this.increase = increase;
+		this.decrease = decrease;
+	}
 
 	function colorChanger(color, colorbool, increase, decrease){
 		if (colorbool){
@@ -25,42 +35,42 @@ window.onload = function(){
 	    	dateArr = date.toLocaleTimeString().split(":");
 	    document.getElementById("clock").innerHTML = dateArr[0] + "<br>" + dateArr[1] + "<br>" + dateArr[2];
 
-	    document.body.style.background = "rgb(" + red + "," + green + "," + blue + ")";
+	    document.body.style.background = "rgb(" + red.value + "," + green.value + "," + blue.value + ")";
 
 	    //colorChanger(red, redDescend, 2, 2);
 
-	    if (redDescend){
-	    	red-=2;
+	    if (red.descend){
+	    	red.value-=2;
 	    } else {
-	    	red+=2;
+	    	red.value+=2;
 	    }
-	    if (red >= 255 || red <= 0){
-	    	redDescend = !redDescend;
+	    if (red.value >= 255 || red.value <= 0){
+	    	red.descend = !(red.descend);
 	    }
 
-	    if (greenDescend){
-	    	green-=5;
+	    if (green.descend){
+	    	green.value-=5;
 	    } else {
-	    	green+=5;
+	    	green.value+=5;
 	    }
-	    if (green >= 255 || green <= 0){
-	    	greenDescend = !greenDescend;
+	    if (green.value >= 255 || green.value <= 0){
+	    	green.descend = !(green.descend);
 	    }
 
-	    if (blueDescend){
-	    	blue-=3;
+	    if (blue.descend){
+	    	blue.value-=3;
 	    } else {
-	    	blue+=3;
+	    	blue.value+=3;
 	    }
-	    if (blue >= 255 || blue <= 0){
-	    	blueDescend = !blueDescend;
+	    if (blue.value >= 255 || blue.value <= 0){
+	    	blue.descend = !(blue.descend);
 	    }
 	}
 
 
 
 	rgbButton.addEventListener("click", function(){
-		rgbDiv.textContent = "RGB(" + red + "," + green + "," + blue + ")";
+		rgbDiv.textContent = "RGB(" + red.value + "," + green.value + "," + blue.value + ")";
 	})
 };
 
