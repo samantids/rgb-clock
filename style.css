@@ -1,0 +1,26 @@
+body {
+	color: white;
+	font-family: "Helvetica";
+}
+
+#get-rgb {
+	width: 11%;
+	padding: 5px;
+	background-color: white;
+	border-radius: 50px;
+	border-style: none;
+	font-size: 1em;
+}
+
+#clock {
+	font-size: 10em;
+}
+
+.center {
+	width: 40%;
+	margin: 100px auto;
+}
+
+.display--inline{
+	display: inline;
+}
