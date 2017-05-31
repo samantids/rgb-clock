@@ -24,3 +24,28 @@ body {
 .display--inline{
 	display: inline;
 }
+
+.margin--top {
+	margin-top: 50px;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+	#clock { 
+		font-size: 20em; 
+	}
+
+	#get-rgb {
+		margin: 25px 0px 0px 30px;
+		width: 23%;
+		padding: 42px;
+		background-color: #efefef;
+		border-radius: 50px;
+		border-style: none;
+		font-size: 2em;
+	}
+
+	.center {
+		width: 40%;
+		margin: 0px auto;
+	}
+}
