@@ -10,9 +10,21 @@
 	<div id="rgb" class="display--inline"></div>
 
 	<div class="margin--top">
-		Red: <input id="red-input" /> 
-		Green: <input id="green-input" />
-		Blue: <input id="blue-input" />
+		<div>
+			<button id="red-input-minus">R -</button>
+			<input type="range" id="red-slider" min="0" max="50" value="" />
+			<button id="red-input-plus">R +</button>
+		</div>
+		<div>
+			<button id="green-input-minus">G -</button>
+			<input type="range" id="green-slider" min="0" max="50" value="" />
+			<button id="green-input-plus">G +</button>
+		</div>
+		<div>
+			<button id="blue-input-minus">B -</button>
+			<input type="range" id="blue-slider" min="0" max="50" value="" />
+			<button id="blue-input-plus">B +</button>
+		</div>
 	</div>
 
 	<div id="clock" class="center">
