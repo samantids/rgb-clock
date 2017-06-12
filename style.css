@@ -3,14 +3,44 @@ body {
 	font-family: "Helvetica";
 }
 
+#menu-button {
+	background-color: transparent;
+	border: none;
+	color: white;
+	margin-top: 10px;
+}
+
+button:focus {
+	outline: none;
+}
+
+#menu {
+	display: none;
+	position: absolute;
+	z-index: 10;
+	margin-top: 0px;
+	padding: 36px 13px 38px;
+	background-color: rgba(255, 255, 255, 0.35);
+}
+
+.menu-margin--left {
+	margin-left: 22px;
+}
+
 #get-rgb {
-	width: 11%;
+	width: 30%;
 	padding: 5px;
 	background-color: white;
 	border-radius: 50px;
 	border-style: none;
 	font-size: 1em;
 }
+
+#rgb {
+	display: none;
+	z-index: -10;
+}
+
 
 #clock {
 	font-size: 10em;
@@ -30,22 +60,44 @@ body {
 }
 
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+	#menu-button {
+		font-size: 1.5em;
+	}
+
+	#menu {
+		width: 75%;
+		background-color: rgba(255, 255, 255, 0.5);
+	}
+
 	#clock { 
 		font-size: 20em; 
 	}
 
-	#get-rgb {
+	button, #get-rgb {
 		margin: 25px 0px 0px 30px;
-		width: 23%;
 		padding: 42px;
-		background-color: #efefef;
+		background-color: rgba(210, 210, 210, 1);
 		border-radius: 50px;
 		border-style: none;
 		font-size: 2em;
 	}
 
+	#rgb {
+		font-size: 2em;
+		color: black;
+		padding: 4% 5%;
+		background-color: rgba(255, 255, 255, .8);
+		left: -3%;
+		position: relative;
+	}
+
 	.center {
 		width: 40%;
 		margin: 0px auto;
+	}
+
+	.slider {
+		display: none;
 	}
 }

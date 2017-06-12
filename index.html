@@ -2,28 +2,32 @@
 <html>
 <head>
 	<title>Color Changer</title>
+	<script src="https://use.fontawesome.com/b399aad971.js"></script>
 	<link href="style.css" rel="stylesheet" />
 </head>
 
 <body>
-	<button id="get-rgb">Get RGB!</button>
-	<div id="rgb" class="display--inline"></div>
+	<button id="menu-button" class="menu-margin--left"><i class="fa fa-bars fa-5x" aria-hidden="true"></i></button>
+	<div id="menu" class="menu-margin--left">
+		<button id="get-rgb">Get RGB!</button>
+		<div id="rgb" class="display--inline"></div>
 
-	<div class="margin--top">
-		<div>
-			<button id="red-input-minus">R -</button>
-			<input type="range" id="red-slider" min="0" max="50" value="" />
-			<button id="red-input-plus">R +</button>
-		</div>
-		<div>
-			<button id="green-input-minus">G -</button>
-			<input type="range" id="green-slider" min="0" max="50" value="" />
-			<button id="green-input-plus">G +</button>
-		</div>
-		<div>
-			<button id="blue-input-minus">B -</button>
-			<input type="range" id="blue-slider" min="0" max="50" value="" />
-			<button id="blue-input-plus">B +</button>
+		<div class="margin--top">
+			<div>
+				<button id="red-input-minus">R -</button>
+				<input type="range" class="slider" id="red-slider" min="0" max="50" value="" />
+				<button id="red-input-plus">R +</button>
+			</div>
+			<div>
+				<button id="green-input-minus">G -</button>
+				<input type="range" class="slider" id="green-slider" min="0" max="50" value="" />
+				<button id="green-input-plus">G +</button>
+			</div>
+			<div>
+				<button id="blue-input-minus">B -</button>
+				<input type="range" class="slider" id="blue-slider" min="0" max="50" value="" />
+				<button id="blue-input-plus">B +</button>
+			</div>
 		</div>
 	</div>
 

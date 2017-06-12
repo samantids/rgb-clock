@@ -1,5 +1,8 @@
 window.onload = function(){
-	var rgbButton = document.getElementById("get-rgb"),
+	var menuButton = document.getElementById("menu-button"),
+		menuDisplay = false,
+		menu = document.getElementById("menu"),
+		rgbButton = document.getElementById("get-rgb"),
 		rgbDiv = document.getElementById("rgb"),
 		clockHour = document.getElementById("clock-hour"),
 		clockMinute = document.getElementById("clock-minute"),
@@ -150,8 +153,21 @@ window.onload = function(){
 		}
 	}); */
 
+	menuButton.addEventListener("click", function(){
+		if(!menuDisplay){
+			menu.style.display = "block";
+			rgbDiv.style.display="none";
+			menuDisplay = !menuDisplay;
+		} else {
+			menu.style.display = "none";
+			menuDisplay = !menuDisplay;
+		}
+	});
+
 	rgbButton.addEventListener("click", function(){
+		rgbDiv.style.display = "inline";
 		rgbDiv.textContent = "RGB(" + red.value + "," + green.value + "," + blue.value + ")";
-	})
+	});
+
 };
 
