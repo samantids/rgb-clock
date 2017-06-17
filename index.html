@@ -13,22 +13,36 @@
 		<div id="rgb" class="display--inline"></div>
 
 		<div class="margin--top">
+			<button id="slow" class="web-button">Slow</button>
+			<button id="medium" class="web-button selected-button">Medium</button>
+			<button id="fast" class="web-button">Fast</button>
+		</div>
+
+		<div class="margin--top">
 			<div>
-				<button id="red-input-minus">R -</button>
-				<input type="range" class="slider" id="red-slider" min="0" max="50" value="" />
-				<button id="red-input-plus">R +</button>
+				<button id="red-input-minus" class="web-button">R -</button>
+				<input type="range" id="red-slider" min="0" max="30" value="" />
+				<div id="red-mobile" class="color-mobile"></div>
+				<button id="red-input-plus" class="web-button plus-button">R +</button>
 			</div>
 			<div>
-				<button id="green-input-minus">G -</button>
-				<input type="range" class="slider" id="green-slider" min="0" max="50" value="" />
-				<button id="green-input-plus">G +</button>
+				<button id="green-input-minus" class="web-button">G -</button>
+				<input type="range" id="green-slider" min="0" max="30" value="" />
+				<div id="green-mobile" class="color-mobile"></div>
+				<button id="green-input-plus" class="web-button plus-button">G +</button>
 			</div>
 			<div>
-				<button id="blue-input-minus">B -</button>
-				<input type="range" class="slider" id="blue-slider" min="0" max="50" value="" />
-				<button id="blue-input-plus">B +</button>
+				<button id="blue-input-minus" class="web-button">B -</button>
+				<input type="range" id="blue-slider" min="0" max="30" value="" />
+				<div id="blue-mobile" class="color-mobile"></div>
+				<button id="blue-input-plus" class="web-button plus-button">B +</button>
 			</div>
 		</div>
+
+		<div class="margin--top">
+			<button id="reset" class="web-button"><i class="fa fa-refresh fa-lg" aria-hidden="true"></i></button>
+		</div>
+
 	</div>
 
 	<div id="clock" class="center">

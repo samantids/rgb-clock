@@ -16,14 +16,33 @@ window.onload = function(){
 		redSlider = document.getElementById("red-slider"),
 		greenSlider = document.getElementById("green-slider"),
 		blueSlider = document.getElementById("blue-slider"),
-		red = new Color (1, 2),
-		green = new Color (2, 5),
-		blue = new Color (1, 4),
-		timer = setInterval(myTimer, 100);
+		redMobile = document.getElementById("red-mobile"),
+		greenMobile = document.getElementById("green-mobile"),
+		blueMobile = document.getElementById("blue-mobile"),
+		slow = document.getElementById("slow"),
+		medium = document.getElementById("medium"),
+		fast = document.getElementById("fast"),
+		reset= document.getElementById("reset"),
+		TIME = 100;
+		RED_VAL = 1;
+		RED_INC = 2;
+		GREEN_VAL = 2;
+		GREEN_INC = 5;
+		BLUE_VAL = 1;
+		BLUE_INC = 4;
+		MIN_INC = 0;
+		MAX_INC = 30;
+		red = new Color (RED_VAL, RED_INC),
+		green = new Color (GREEN_VAL, GREEN_INC),
+		blue = new Color (BLUE_VAL, BLUE_INC),
+		timer = setInterval(myTimer, TIME);
 	
 	redSlider.value = red.increment;
 	greenSlider.value = green.increment;
 	blueSlider.value = blue.increment;	
+	redMobile.textContent = red.increment;
+	greenMobile.textContent = green.increment;
+	blueMobile.textContent = blue.increment;
 
 	function Color(value, increment){
 		this.value = value;
@@ -67,48 +86,54 @@ window.onload = function(){
 	}
 
 	redInputPlus.addEventListener("click", function() {
-		if(red.increment < 50) {
+		if(red.increment < MAX_INC) {
 			red.increment+=1;
 			redSlider.value = red.increment;
+			redMobile.textContent = red.increment;
 			console.log("red-plus clicked, red increment = " + red.increment);
 		}
 	});
 
 	redInputMinus.addEventListener("click", function() {
-		if(red.increment > 0) {
+		if(red.increment > MIN_INC) {
 			red.increment-=1;
 			redSlider.value = red.increment;
+			redMobile.textContent = red.increment;
 			console.log("red-minus clicked, red increment = " + red.increment);
 		}
 	});
 	greenInputPlus.addEventListener("click", function() {
-		if(green.increment < 50) {
+		if(green.increment < MAX_INC) {
 			green.increment+=1;
 			greenSlider.value = green.increment;
+			greenMobile.textContent = green.increment;
 			console.log("green-plus clicked, green increment = " + green.increment);
 		}
 	});
 
 	greenInputMinus.addEventListener("click", function() {
-		if(green.increment > 0) {
+		if(green.increment > MIN_INC) {
 			green.increment-=1;
 			greenSlider.value = green.increment;
+			greenMobile.textContent = green.increment;
 			console.log("green-minus clicked, green increment = " + green.increment);
 		}
 	});
 
 	blueInputPlus.addEventListener("click", function() {
-		if(blue.increment < 50) {
+		if(blue.increment < MAX_INC) {
 			blue.increment+=1;
 			blueSlider.value = blue.increment;
+			blueMobile.textContent = blue.increment;
 			console.log("blue-plus clicked, blue increment = " + blue.increment);
 		}
 	});
 
 	blueInputMinus.addEventListener("click", function() {
-		if(blue.increment>0) {
+		if(blue.increment>MIN_INC) {
 			blue.increment-=1;
 			blueSlider.value = blue.increment;
+			blueMobile.textContent = blue.increment;
 			console.log("blue-minus clicked, blue increment = " + blue.increment);
 		}
 	});
@@ -156,7 +181,7 @@ window.onload = function(){
 	menuButton.addEventListener("click", function(){
 		if(!menuDisplay){
 			menu.style.display = "block";
-			rgbDiv.style.display="none";
+			rgbDiv.style.display= "none";
 			menuDisplay = !menuDisplay;
 		} else {
 			menu.style.display = "none";
@@ -169,5 +194,44 @@ window.onload = function(){
 		rgbDiv.textContent = "RGB(" + red.value + "," + green.value + "," + blue.value + ")";
 	});
 
+	slow.addEventListener("click", function(){
+		clearInterval(timer);
+		TIME = 1000;
+		timer = setInterval(myTimer, TIME);
+		slow.classList.add("selected-button");
+		medium.classList.remove("selected-button");
+		fast.classList.remove("selected-button");
+	});
+
+	medium.addEventListener("click", function(){
+		clearInterval(timer);
+		TIME = 100;
+		timer = setInterval(myTimer, TIME);
+		slow.classList.remove("selected-button");
+		medium.classList.add("selected-button");
+		fast.classList.remove("selected-button");		
+	});
+	
+	fast.addEventListener("click", function(){
+		clearInterval(timer);
+		TIME = 10;
+		timer = setInterval(myTimer, TIME);
+		slow.classList.remove("selected-button");
+		medium.classList.remove("selected-button");
+		fast.classList.add("selected-button");
+	});
+
+	reset.addEventListener("click", function(){
+		red.increment = RED_INC;
+		redSlider.value = RED_INC;
+		redMobile.textContent = RED_INC;
+		green.increment = GREEN_INC;
+		greenSlider.value = GREEN_INC;
+		greenMobile.textContent = GREEN_INC;
+		blue.increment = BLUE_INC;
+		blueSlider.value = BLUE_INC;
+		blueMobile.textContent = BLUE_INC;
+		console.log("red inc = " + red.increment + " green inc = " + green.increment + " blue inc = " + blue.increment);
+	})
 };
 
