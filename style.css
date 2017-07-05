@@ -40,7 +40,7 @@ button:focus {
 }
 
 #get-rgb {
-	width: 30%;
+	width: 60px;
 	padding: 5px;
 	background-color: white;
 	border-radius: 50px;
@@ -55,7 +55,23 @@ button:focus {
 
 #rgb {
 	display: none;
-	z-index: -10;
+}
+
+#copy-rgb-value {
+	background-color: transparent;
+	color: white;
+	border: none;
+	font-size: 1em;
+	position: relative;
+	top: 8px;
+	width: 142px;
+}
+
+#copy-success {
+	position: relative;
+	margin-left: 25px;
+	margin-top: 10px;
+	visibility: hidden;
 }
 
 
@@ -65,7 +81,7 @@ button:focus {
 
 .center {
 	width: 40%;
-	margin: 100px auto;
+	margin: 0px auto;
 }
 
 .display--inline{
@@ -76,6 +92,10 @@ button:focus {
 	margin-top: 50px;
 }
 
+::selection {
+	background-color: transparent;
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
 	#menu-button {
@@ -84,11 +104,12 @@ button:focus {
 
 	#menu {
 		width: 75%;
-		background-color: rgba(255, 255, 255, 0.5);
+		background-color: rgba(200, 200, 200, 0.5);
 	}
 
 	#clock { 
 		font-size: 20em; 
+		margin-top: -190px;
 	}
 
 	button, #get-rgb {
@@ -98,6 +119,7 @@ button:focus {
 		border-radius: 50px;
 		border-style: outset;
 		font-size: 2em;
+		width: 27%;
 	}
 
 	.plus-button {
@@ -113,13 +135,21 @@ button:focus {
 		color: black;
 		padding: 4% 5%;
 		background-color: rgba(255, 255, 255, .8);
-		left: -3%;
 		position: relative;
+		top: 17px;
 	}
 
-	.center {
-		width: 40%;
-		margin: 0px auto;
+	#copy-rgb-value {
+		color: black;
+		width: 37%;
+	}
+
+	#copy-success {
+		position: relative;
+		margin-left: 215px;
+		top: -25px;
+		font-size: 2em;
+		color: black;
 	}
 
 	input[type=range] {

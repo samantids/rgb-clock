@@ -4,6 +4,8 @@ window.onload = function(){
 		menu = document.getElementById("menu"),
 		rgbButton = document.getElementById("get-rgb"),
 		rgbDiv = document.getElementById("rgb"),
+		copyRGB = document.getElementById("copy-rgb-value"),
+		copySuccess = document.getElementById("copy-success"),
 		clockHour = document.getElementById("clock-hour"),
 		clockMinute = document.getElementById("clock-minute"),
 		clockSecond = document.getElementById("clock-second"),
@@ -23,6 +25,7 @@ window.onload = function(){
 		medium = document.getElementById("medium"),
 		fast = document.getElementById("fast"),
 		reset= document.getElementById("reset"),
+		isMobile = window.matchMedia("only screen and (min-device-width : 320px) and (max-device-width : 480px)"),
 		TIME = 100;
 		RED_VAL = 1;
 		RED_INC = 2;
@@ -44,14 +47,15 @@ window.onload = function(){
 	greenMobile.textContent = green.increment;
 	blueMobile.textContent = blue.increment;
 
+	//color constructor
 	function Color(value, increment){
 		this.value = value;
 		this.descend = false;
 		this.increment = increment;
 		this.colorChanger = colorChanger;
-		//this.inputIncrement = inputIncrement;
 	}
 
+	//color change function
 	function colorChanger(){
 		if (this.descend){
 			this.value-=this.increment;
@@ -63,13 +67,7 @@ window.onload = function(){
 		}
 	}
 
-	/*function inputIncrement(col){
-		if(parseInt(col.value) != "" && parseInt(col.value) > 0){
-			col.increment = parseInt(col.value);
-		}
-		console.log(parseInt(col.value));
-	}*/
-
+	//clock + calls color change function
 	function myTimer() {
 	    var date = new Date(),
 	    	dateArr = date.toLocaleTimeString().split(":");
@@ -85,6 +83,7 @@ window.onload = function(){
 	    blue.colorChanger();
 	}
 
+	//red plus incrementer 
 	redInputPlus.addEventListener("click", function() {
 		if(red.increment < MAX_INC) {
 			red.increment+=1;
@@ -94,6 +93,7 @@ window.onload = function(){
 		}
 	});
 
+	//red minus incrementer
 	redInputMinus.addEventListener("click", function() {
 		if(red.increment > MIN_INC) {
 			red.increment-=1;
@@ -102,6 +102,8 @@ window.onload = function(){
 			console.log("red-minus clicked, red increment = " + red.increment);
 		}
 	});
+
+	//green plus incrementer
 	greenInputPlus.addEventListener("click", function() {
 		if(green.increment < MAX_INC) {
 			green.increment+=1;
@@ -111,6 +113,7 @@ window.onload = function(){
 		}
 	});
 
+	//green minus incrementer
 	greenInputMinus.addEventListener("click", function() {
 		if(green.increment > MIN_INC) {
 			green.increment-=1;
@@ -120,6 +123,7 @@ window.onload = function(){
 		}
 	});
 
+	//blue plus incrementer
 	blueInputPlus.addEventListener("click", function() {
 		if(blue.increment < MAX_INC) {
 			blue.increment+=1;
@@ -129,6 +133,7 @@ window.onload = function(){
 		}
 	});
 
+	//blue minus incrementer
 	blueInputMinus.addEventListener("click", function() {
 		if(blue.increment>MIN_INC) {
 			blue.increment-=1;
@@ -138,6 +143,7 @@ window.onload = function(){
 		}
 	});
 
+	//red slider - desktop only
 	redSlider.addEventListener("change", function() {
 		console.log("red slider = " + redSlider.value + " red increment = " + red.increment);
 		var redSliderValue = parseInt(redSlider.value);
@@ -146,6 +152,7 @@ window.onload = function(){
 		}
 	});
 
+	//green slider - desktop only
 	greenSlider.addEventListener("change", function() {
 		console.log("green slider = " + greenSlider.value + " green increment = " + green.increment);
 		var greenSliderValue = parseInt(greenSlider.value);
@@ -154,6 +161,7 @@ window.onload = function(){
 		}
 	});
 
+	//blue slider - desktop only
 	blueSlider.addEventListener("change", function() {
 		console.log("blue slider = " + blueSlider.value + " blue increment = " + blue.increment);
 		var blueSliderValue = parseInt(blueSlider.value);
@@ -162,22 +170,7 @@ window.onload = function(){
 		}
 	});
 
-	/*greenInput.addEventListener("input", function() {
-		console.log("green input = " + greenInput.value + " green increment = " + green.increment);
-		var greenInputValue = parseInt(greenInput.value);
-		if(greenInputValue != "" && greenInputValue > 0){
-			green.increment = greenInputValue;
-		}
-	});
-	
-	blueInput.addEventListener("input", function() {
-		console.log("blue input = " + blueInput.value + " blue increment = " + blue.increment);
-		var blueInputValue = parseInt(blueInput.value);
-		if(blueInputValue != "" && blueInputValue > 0){
-			blue.increment = blueInputValue;
-		}
-	}); */
-
+	//menu button
 	menuButton.addEventListener("click", function(){
 		if(!menuDisplay){
 			menu.style.display = "block";
@@ -189,11 +182,39 @@ window.onload = function(){
 		}
 	});
 
+	//grab rgb
 	rgbButton.addEventListener("click", function(){
 		rgbDiv.style.display = "inline";
-		rgbDiv.textContent = "RGB(" + red.value + "," + green.value + "," + blue.value + ")";
+		copyRGB.value = "RGB(" + red.value + "," + green.value + "," + blue.value + ")";
+		console.log(copyRGB + " rgb value is " + copyRGB.value);
 	});
 
+	//copy rgb button
+	rgbDiv.addEventListener("click", function(){
+		copyRGB.select();
+		document.execCommand("copy");
+		copySuccess.style.visibility = "visible";
+		if(isMobile.matches){
+			rgbDiv.style["background-color"] = "rgba" + copyRGB.value.slice(3, -1) + ",.8)";
+			console.log("mobile color change " + "rgba" + copyRGB.value.slice(3, -1) + ",.8)");
+		} else {
+			copyRGB.style["border-style"] = "none none solid none";
+			copyRGB.style["border-width"] = "5px";
+			copyRGB.style["border-color"] = "rgba" + copyRGB.value.slice(3, -1) + ",.8)";
+		};
+		setTimeout(function(){
+			copySuccess.style.visibility = "hidden";
+			if(isMobile.matches){
+				rgbDiv.style["background-color"] = "rgba(255, 255, 255, .8)";
+			} else {
+				copyRGB.style.border = "none";
+			};
+		}, 2000);
+		console.log("rgb copied + rgba is " + "rgba" + copyRGB.value.slice(3, -1) + ",.8)");
+
+	})
+
+	//slow button
 	slow.addEventListener("click", function(){
 		clearInterval(timer);
 		TIME = 1000;
@@ -203,6 +224,7 @@ window.onload = function(){
 		fast.classList.remove("selected-button");
 	});
 
+	//medium button
 	medium.addEventListener("click", function(){
 		clearInterval(timer);
 		TIME = 100;
@@ -211,7 +233,8 @@ window.onload = function(){
 		medium.classList.add("selected-button");
 		fast.classList.remove("selected-button");		
 	});
-	
+
+	//fast button
 	fast.addEventListener("click", function(){
 		clearInterval(timer);
 		TIME = 10;
@@ -221,6 +244,7 @@ window.onload = function(){
 		fast.classList.add("selected-button");
 	});
 
+	//reset button
 	reset.addEventListener("click", function(){
 		red.increment = RED_INC;
 		redSlider.value = RED_INC;
