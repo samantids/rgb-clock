@@ -26,15 +26,15 @@ window.onload = function(){
 		fast = document.getElementById("fast"),
 		reset= document.getElementById("reset"),
 		isMobile = window.matchMedia("only screen and (min-device-width : 320px) and (max-device-width : 480px)"),
-		TIME = 100;
-		RED_VAL = 1;
-		RED_INC = 2;
-		GREEN_VAL = 2;
-		GREEN_INC = 5;
-		BLUE_VAL = 1;
-		BLUE_INC = 4;
-		MIN_INC = 0;
-		MAX_INC = 30;
+		TIME = 100,
+		RED_VAL = 1,
+		RED_INC = 2,
+		GREEN_VAL = 2,
+		GREEN_INC = 5,
+		BLUE_VAL = 1,
+		BLUE_INC = 4,
+		MIN_INC = 0,
+		MAX_INC = 30,
 		red = new Color (RED_VAL, RED_INC),
 		green = new Color (GREEN_VAL, GREEN_INC),
 		blue = new Color (BLUE_VAL, BLUE_INC),
@@ -57,12 +57,12 @@ window.onload = function(){
 
 	//color change function
 	function colorChanger(){
-		if (this.descend){
+		if(this.descend){
 			this.value-=this.increment;
 		} else {
 			this.value+=this.increment;
 		}
-		if (this.value >= 255 || this.value <= 0){
+		if(this.value >= 255 || this.value <= 0){
 			this.descend = !(this.descend);
 		}
 	}
